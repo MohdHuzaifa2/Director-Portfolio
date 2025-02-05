@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+  src: url("./assets/fonts/Roslindale-DisplayCondensedLight.woff");
+  font-family: Roselindale;
+}
+
+:root {
+  --pink: #de0038;
+  --darkpink: #B1001B;
+  --lightpink: #fffafb;
+  --section-padding: 15px 20px;
+  --easing: cubic-bezier(0.78, 0, 0.22, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--lightpink);
+  background: #fff3f5;
+  font-family: "Inter Tight", "Inter", sans-serif;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Roselindale, serif;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 6vw;
+  /* color: var(--darkpink); 
+  color: var(--pink);  */
+}
+
+nav {
+  background: var(--pink);
+  color: white;
+  width: 100%;
+  height: 100vh;
+  padding: var(--section-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  will-change: transform;
+  transition: transform 0.75s var(--easing);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+nav.opened {
+  transform: scaleY(1);
+}
+
+body:has(nav.opened) {
+  overflow: hidden;
+}
+
+body:has(nav.opened) main {
+  transform: translateY(100vh);
+}
+
+nav ul {
+  padding-right: 200px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+nav ul li {
+  font-size: 50px;
+}
+
+header {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 20;
+  padding: var(--section-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+  font-weight: 500;
+  color: var(--pink);
+}
+
+header .logo h3 {
+  transition: color 0.75s var(--easing) 0.25s;
+  font-family: "Inter Tight";
+  font-weight: 500;
+  font-size: 20px;
+}
+
+main {
+  overflow-y: auto;
+  scrollbar-width: auto;
+  will-change: transform;
+  transition: transform 0.75s var(--easing);
+  transform-origin: top;
+  margin-top: 60px;
+}
+
+main::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+}
+
+section {
+  padding: var(--section-padding);
+}
+
+.hero-section {
+  padding-bottom: 20vh;
+}
+
+.nav-toggler {
+  border: none;
+  outline: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+.nav-toggle-line {
+  width: 25px;
+  height: 2px;
+  background: currentColor;
+  margin-bottom: 3px;
+  transition: all 0.5s var(--easing);
+  transition-delay: background 0.75s;
+}
+
+.nav-toggle-line:last-child {
+  margin-bottom: 0;
+  margin-top: 3px;
+}
+
+.nav-open .nav-toggle-line:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.nav-open .nav-toggle-line:nth-child(2) {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+.circle {
+  width: 30vw;
+  min-width: 300px;
+  display: block;
+  margin: 20px auto;
+  aspect-ratio: 1/1;
+  background: deeppink;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white !important;
+}
+
+.hero-heading {
+  margin: 10px auto;
+  margin-top: 20vh;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--pink);    
+  font-size: clamp(60px, 8vw, 160px);
+  text-align: center;
+}
+
+.hero-section p {
+  margin: 20px auto;
+  margin-bottom: 20px;
+  max-width: 340px;
+  text-align: center;
+  letter-spacing: 0.6px;
+  color: var(--darkpink);
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.hero-cta {
+  position: relative;
+  margin: 0 auto;
+  border: none;
+  outline: none;
+  padding: 10px 20px 12px;
+  border: 1px solid #ff4976;
+  border-radius: 500px;
+  color: var(--pink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  display: block;
+  transition: all 0.5s var(--easing);
+  cursor: pointer;
+}
+
+.hero-cta::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.hero-cta:hover {
+  background: var(--pink);
+  color: white;
+}
+
+/* .hero-cta::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  display: inline-block;
+  background: currentColor;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transform: scaleX(0);
+  will-change: transform;
+  transition: transform 0.7s var(--easing);
+  transform-origin: 100%;
+}
+
+.hero-cta:hover::after {
+  transform: scaleX(1);
+  transform-origin: 0%;
+} */
+
+@media screen and (min-width: 425px) {
+  :root {
+    --section-padding: 15px 40px;
+  }
+}
+
+@media screen and (min-width: 786px) {
+  :root {
+    --section-padding: 15px 80px;
+  }
+}
